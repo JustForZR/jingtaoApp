@@ -1,0 +1,112 @@
+<div ng-controller="searchSmellCtrl" class="searchSmellBox" style="height:{{search.phoneHeight}}" ng-cloak>
+    <header class="header" ng-click="search.getDatas()">
+        <div class="logo">
+            <img src="../img/indexImg/companyLogo.png" class="logo_Img" />
+        </div>
+        <i class="search"></i>
+    </header>
+    <header class="otherHeader" >
+        <div class="otherHeaderContent">
+            <img src="../img/indexImg/brandLogo.png" />
+            <div class="nowWatching">
+                <div>正在浏览<span>浙江特产</span><i class="sanjiao"></i></div>
+            </div>
+            <i class="search"></i>
+        </div>
+        <div class="mapBox">
+            <div class="otherMap">
+                <china-map></china-map>       
+            </div>
+            <div class="downMenu">
+                <div class="downLine"></div>
+            </div>
+        </div>
+    </header>
+    <div class="firstWrapper">
+        <div class="firstScroller">
+            <div class="bgColor"></div>
+            <china-map></china-map>
+            <div class="place_introduce" style="background-image: url({{search.shengBgPic}});height:{{search.placeHeight}}">
+                <div class="place_introduce_modal">
+                    <h5 class="place_name">{{search.shengName}}</h5>
+                    <p class="place_detail">{{search.shengIntroduce}}</p>
+                </div>
+            </div>
+            <div class="index_storeBox">
+                <div class="swiper-storeContainer">
+                    <div class="swiper-wrapper">
+                        <div ng-repeat="item in search.storeList track by $index" ng-style="search.storeStyle" ng-class="{'swiper-slide':true}">
+                            <div class="index_store">
+                                <div class="index_storeName">
+                                    <span>{{item.region_name}}馆</span>
+                                    <i class="iconfont" ng-click="search.showStoreModal()">&#xe601;</i>
+                                </div>
+                                <img src='{{item.griImg}}' ng-style="search.storeImgStyle" />
+                                <div class="index_storeBottom">
+                                    <div class="index_enterStore">
+                                        <p> <i class="iconfont">&#xe602;</i> 进入杭州馆 </p>
+                                    </div>
+                                    <div class="index_allStore">
+                                        <p> <i class="iconfont">&#xe609;</i> 所有商家 </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="index_storeGoodsBox" ng-repeat="item in search.storeGoodsList">
+                <div class="index_storeGoodsTitle">
+                    <h5>{{item.region_name}}馆</h5><i class="iconfont">&#xe601;</i>
+                </div>
+                <div class="index_storeIntroduce">
+                    <dl>
+                        <dt>
+                            <span>{{item.griInfo}}</span>
+                        </dt>
+                        <dd>
+                            <img src="{{item.griImg}}" />
+                        </dd>
+                    </dl>
+                </div>
+                <div class="index_storeContent">
+                    <div class="swiper-goodsContainer{{$index}}">
+                        <div class="swiper-wrapper">
+                            <div ng-repeat="data in item.proAdsAry track by $index" ng-show="data.num==0" ng-class="{'center':item.proAdsAry.length === 1,'swiper-slide':true,'storeGoodsMargin':item.proAdsAry.length !== 1}">
+                                <div class="index_storeGoodsDetail">
+                                    <img src="{{data.adImg}}" />
+                                    <div class="index_storeGoodsFooter">
+                                        <h5>{{data.gName}}</h5>
+                                        <p>约￥<i>{{data.mId}}</i>/斤</p>
+                                        <a href="javascript:void(0)">抢好货</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-repeat="data in item.proAdsAry track by $index" ng-show="data.num==1" ng-class="{'center':item.proAdsAry.length === 1,'swiper-slide':true,'storeGoodsMargin':item.proAdsAry.length !== 1}">
+                                <div class="index_storeGoodsDetail">
+                                    <img src="{{data.gThumbPic}}" />
+                                    <div class="index_storeGoodsFooter">
+                                        <h5>{{data.gName}}</h5>
+                                        <p>￥<i>{{data.gDiscountPrice}}</i>
+                                            <s>{{data.gPrices}}</s>
+                                        </p>
+                                        <span>{{data.gDiscountPrice/data.gPrices*10 | number:1}}折</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="index_storeGoodsList">
+                    <ul>
+                        <li> <a href="#" class="iconfont">  &#xe602;&nbsp;进入该馆</a> </li>
+                        <li> <a href="#" class="iconfont">&#xe609;&nbsp;所有商家 </a> </li>
+                        <li> <a href="#" class="iconfont"> &#xe70f;&nbsp;分享特产</a> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>

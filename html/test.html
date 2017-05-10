@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="jingtaoApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="../css/reset.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<style type="text/css">
+		html,body{
+			height: 100%;
+		}
+		body{
+			 display: -moz-box;
+		    display: -webkit-box;
+		    display: box;
+		    -moz-box-orient: vertical;
+		    -webkit-box-orient: vertical;
+		    -o-box-orient: vertical;
+		    box-orient: vertical;
+		}
+		.header{
+			width:100%;
+			height:100px;
+			background:rgba(0,0,0,0.3);
+		}
+		.section{
+			width:100%;
+			-webkit-box-flex: 1;
+		    -moz-box-flex: 1;
+		    -ms-box-flex: 1;
+		    box-flex: 1;
+		    background:pink;
+		    display: -moz-box;
+		    display: -webkit-box;
+		    display: box;
+		    -moz-box-orient: vertical;
+		    -webkit-box-orient: vertical;
+		    -o-box-orient: vertical;
+		    box-orient: vertical;
+		}
+		.section h2{
+			height:30px;
+		}
+		.wrapper{
+			-webkit-box-flex: 1;
+		    -moz-box-flex: 1;
+		    -ms-box-flex: 1;
+		    box-flex: 1;
+			background:yellow;
+		}
+		p{
+			line-height:100px;
+		}
+		.findBox{
+			-webkit-box-flex: 1;
+		    -moz-box-flex: 1;
+		    -ms-box-flex: 1;
+		    box-flex: 1;
+		}
+	</style>
+</head>
+<body ng-controller="jingtaoCtrl">
+	<div class="header">
+		
+	</div>
+	<div class="section"> 
+		<div class="wrapper">
+			<div class="scroll">
+				<p  data-ui-sref="searchSmell" data-ui-sref-active="active">1</p>
+				<p  data-ui-sref="find" data-ui-sref-active="active">2</p>
+				<p  data-ui-sref="specialtySort" data-ui-sref-active="active">3</p>
+				<p data-ui-sref="shoppingCart" data-ui-sref-active="active">4</p>
+				<p data-ui-sref="personalCenter" data-ui-sref-active="active">5</p>
+				<p>5</p>
+				<p>6</p>
+				<p>6</p>
+				<p>6</p>
+				<p>7</p>
+			</div>
+		</div>
+	</div>
+	
+	<div data-ui-view>
+		
+    </div>
+	<script type="text/javascript" src="../jslib/jquery/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="../jslib/angular/angular.min.js"></script>
+    <script src="https://npmcdn.com/angular-ui-router@1.0.0-alpha.4/release/angular-ui-router.js"></script>
+	<script type="text/javascript" src="../jslib/iscroll/iscroll.js"></script>
+
+	<script type="text/javascript">
+	var firstWrapper = new IScroll('.wrapper');
+    var jingtaoApp = angular.module('jingtaoApp', ["ui.router"]);
+	jingtaoApp.config(function($urlRouterProvider, $stateProvider) {
+	    var states = [{
+	        name: 'searchSmell',
+	        url: '/searchSmell',
+	        templateUrl: 'searchSmell.html'
+	    }, {
+	        name: 'find',
+	        url: '/find',
+	        templateUrl: 'find.html'
+	    }, {
+	        name: 'specialtySort',
+	        url: '/specialtySort',
+	        templateUrl: 'specialtySort.html'
+	    }, {
+	        name: 'shoppingCart',
+	        url: '/shoppingCart',
+	        templateUrl: 'shoppingCart.html'
+	    }, {
+	        name: 'personalCenter',
+	        url: '/personalCenter',
+	        templateUrl: 'personalCenter.html'
+	    }];
+
+	    states.forEach(function(state) {
+	        $stateProvider.state(state);
+	    });
+	})
+	jingtaoApp.controller("jingtaoCtrl",function(){
+
+	})
+	</script>
+</body>
+</html>
